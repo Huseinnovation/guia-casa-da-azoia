@@ -1,0 +1,33 @@
+{
+  "updated": "2026-11-18T16:20:00+00:00",
+  "source": "surf-forecast.com · Praia Grande",
+  "days": [
+    {"date": "2026-11-18",
+     "slots": [
+      {"t": "09:00", "wave": 4.0, "period": 16, "wind": 15, "dir": "WSW"},
+      {"t": "12:00", "wave": 4.5, "period": 16, "wind": 25, "dir": "SW"},
+      {"t": "15:00", "wave": 4.5, "period": 16, "wind": 40, "dir": "SW"},
+      {"t": "18:00", "wave": 5.0, "period": 16, "wind": 45, "dir": "WSW"},
+      {"t": "21:00", "wave": 5.0, "period": 16, "wind": 35, "dir": "WNW"}],
+     "tides": [
+      {"type": "high", "t": "08:48", "h": 2.13},
+      {"type": "low", "t": "15:19", "h": 0.88},
+      {"type": "high", "t": "21:37", "h": 2.00}]},
+    {"date": "2026-11-19",
+     "slots": [
+      {"t": "09:00", "wave": 5.0, "period": 14, "wind": 30, "dir": "WNW"},
+      {"t": "12:00", "wave": 5.0, "period": 14, "wind": 25, "dir": "WNW"},
+      {"t": "15:00", "wave": 5.0, "period": 14, "wind": 25, "dir": "WNW"},
+      {"t": "18:00", "wave": 4.5, "period": 14, "wind": 20, "dir": "WNW"},
+      {"t": "21:00", "wave": 4.5, "period": 14, "wind": 20, "dir": "W"}],
+     "tides": []},
+    {"date": "2026-11-20",
+     "slots": [
+      {"t": "09:00", "wave": 4.0, "period": 14, "wind": 15, "dir": "SSW"},
+      {"t": "12:00", "wave": 4.0, "period": 14, "wind": 15, "dir": "S"},
+      {"t": "15:00", "wave": 3.5, "period": 13, "wind": 25, "dir": "S"},
+      {"t": "18:00", "wave": 3.5, "period": 13, "wind": 30, "dir": "S"},
+      {"t": "21:00", "wave": 3.0, "period": 13, "wind": 35, "dir": "S"}],
+     "tides": []}
+  ]
+}
