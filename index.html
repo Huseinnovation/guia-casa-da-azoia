@@ -183,9 +183,9 @@ h2{font-size:21px;letter-spacing:-.01em;margin:30px 2px 12px;font-weight:400}
 .lv span{font-size:12.5px;color:var(--ink2);line-height:1.35;font-weight:300}
 .lv .ico{width:34px;height:34px;border-radius:11px}
 
-.tabbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));width:min(528px,calc(100% - 28px));border-radius:26px;display:grid;grid-template-columns:repeat(5,1fr);padding:7px;z-index:20}
-.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 0;border-radius:19px;font-size:11px;color:var(--ink3);transition:all .2s;letter-spacing:.02em}
-.tab.on{color:var(--verde);background:rgba(0,90,77,.1)}
+.tabbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));width:min(528px,calc(100% - 28px));border-radius:26px;display:grid;grid-template-columns:repeat(5,1fr);padding:7px;z-index:20;background:rgba(250,248,244,.92)!important;backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);box-shadow:0 10px 30px rgba(0,0,0,.14),0 0 0 1px rgba(20,20,20,.06)!important}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 0;border-radius:19px;font-size:11px;color:var(--ink2);transition:all .2s;letter-spacing:.02em}
+.tab.on{color:var(--verde);background:rgba(0,90,77,.12);font-weight:500}
 .tab svg{width:22px;height:22px}
 .count{position:absolute;margin:-4px 0 0 18px;background:var(--terra);color:#fff;font-size:10px;border-radius:999px;padding:1px 5px}
 .toast{position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);opacity:0;padding:10px 16px;border-radius:999px;background:rgba(20,20,20,.9);color:#fff;font-size:13px;transition:all .3s;z-index:30;pointer-events:none}
@@ -309,6 +309,8 @@ h2{font-size:21px;letter-spacing:-.01em;margin:30px 2px 12px;font-weight:400}
     <h1 data-t="houseTitle"></h1>
     <div class="chef glass" id="chefHouse" style="margin-bottom:14px"></div>
     <div class="grid" id="houseGrid"></div>
+    <h2 data-t="local"></h2>
+    <div class="grid" id="houseLocalGrid"></div>
   </section>
 
   <!-- SAVED -->
@@ -1120,6 +1122,8 @@ function renderGrid(){
 function renderHouse(){
   const el=document.getElementById("houseGrid");
   el.innerHTML=PLACES.filter(p=>p.cat==="house").map(cardHTML).join("");bindCards(el);
+  const el2=document.getElementById("houseLocalGrid");
+  el2.innerHTML=PLACES.filter(p=>p.cat==="local").map(cardHTML).join("");bindCards(el2);
 }
 function renderSaved(){
   const el=document.getElementById("savedGrid");
