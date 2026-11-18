@@ -1024,7 +1024,7 @@ function cardHTML(p){
   if(mapsQ) actions+=`<a class="btn primary" href="${mapsUrl(mapsQ)}" target="_blank" rel="noopener">${svg("pin",15)} ${t("open")}</a>`;
   if(mapsQ&&["food","coffee","wine"].includes(p.cat)) actions+=`<a class="btn" href="${mapsUrl(mapsQ)}" target="_blank" rel="noopener">★ ${L==="pt"?"Avaliações Google":"Google reviews"}</a>`;
   if(p.url) actions+=`<a class="btn" href="${p.url}" target="_blank" rel="noopener">${p.cat==="palace"?(L==="pt"?"Bilhetes":"Tickets"):(L==="pt"?"Site":"Website")}</a>`;
-  if(p.phone) actions+=`<a class="btn" href="tel:+${p.phone}">${t("call")}</a>`;
+  if(p.phone) actions+=`<a class="btn" href="tel:+${p.phone}" target="_blank" rel="noopener">${t("call")}</a>`;
   if(hasNum){
     const msg=L==="pt"?"Olá! Estamos hospedados na Casa da Azóia (contacto da Joana).":"Hi! We're staying at Casa da Azóia — Joana gave us your contact.";
     actions+=`<a class="btn wa" href="${waUrl(cfg.phone,msg)}" target="_blank" rel="noopener">${t("wa")}${cfg.name?" · "+cfg.name:""}</a>`;
