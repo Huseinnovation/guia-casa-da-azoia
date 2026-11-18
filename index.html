@@ -285,10 +285,11 @@ h2{font-size:21px;letter-spacing:-.01em;margin:30px 2px 12px;font-weight:400}
    Days: 0=Sun 1=Mon 2=Tue 3=Wed 4=Thu 5=Fri 6=Sat
    ========================================================= */
 const CONFIG = {
-  hostWhatsApp: "",                 // your number
+  hostWhatsApp: "351916309201",                 // your number
   guestName: "",                    // optional: "Anna" → "Good morning, Anna"
   houseBeachName: "Praia de Assentiz",               // the beach right in front of the house
   fishermanAdraga: { name: "Nuno “o Alemão” · Adraga Marisco", phone: "351914901371" },     // percebes at Praia da Adraga
+  gasDelivery:     { name: "Rui do Gás", phone: "351963394069" },     // gas bottle delivery
   paellaChef:      { name: "Francisco Bispo", phone: "351924059020" },     // chef who cooks paella at the house
   privateChef:     { name: "Tantôt", phone: "351912695515" },     // chef for a dinner at home
   padeira:         { days: [0,1,2,3,4,5,6], time: "9:15", where: { en: "in front of Café Pôr do Sol", pt: "em frente ao Café Pôr do Sol" } },      // bread van, e.g. days:[2,4,6], time:"9:30"
@@ -333,7 +334,7 @@ const T = {
     weekEyebrow:"Local rhythm", weekTitle:"Markets, fairs & bread", weekSub:"Tap a day to see the markets and fairs around the village.",
     savedEyebrow:"Your shortlist", savedTitle:"Saved for this trip", savedEmpty:"Tap the heart on anything in Explore and it lands here.",
     foot:"Made with love in Azóia · the westernmost village in mainland Europe",
-    all:"All", joana:"Joana's favourites", food:"Restaurants", coffee:"Coffee & brunch", wine:"Wine", palace:"Palaces", n_any:"All", n_walk:"Walk from home", n_beach:"By the beach", n_family:"Families", n_town:"Cascais", n_sintra:"Sintra", beach:"Beaches", eat:"Shopping", local:"Local contacts", walk:"Walks", secret:"Secret spots",
+    all:"All", house:"The House", joana:"Joana's favourites", food:"Restaurants", coffee:"Coffee & brunch", wine:"Wine", palace:"Palaces", n_any:"All", n_walk:"Walk from home", n_beach:"By the beach", n_family:"Families", n_town:"Cascais", n_sintra:"Sintra", beach:"Beaches", eat:"Shopping", local:"Local contacts", walk:"Walks", secret:"Secret spots",
     open:"Open in Maps", call:"Call", wa:"WhatsApp", askJoana:"Ask Joana for the contact", saved:"Saved", removed:"Removed",
     nothingToday:"Nothing on the village calendar today — a perfect day to wander.",
     market:"Market", bread:"The baker comes by", at:"at",
@@ -359,7 +360,7 @@ const T = {
     weekEyebrow:"Ritmo local", weekTitle:"Mercados, feiras e pão", weekSub:"Toca num dia para ver os mercados e feiras à volta da aldeia.",
     savedEyebrow:"A tua lista", savedTitle:"Guardado para esta estadia", savedEmpty:"Toca no coração de qualquer sítio em Explorar e ele aparece aqui.",
     foot:"Feito com amor na Azóia · a aldeia mais ocidental da Europa continental",
-    all:"Tudo", joana:"Favoritos da Joana", food:"Restaurantes", coffee:"Cafés e brunch", wine:"Vinho", palace:"Palácios", n_any:"Todos", n_walk:"A pé de casa", n_beach:"Na praia", n_family:"Famílias", n_town:"Cascais", n_sintra:"Sintra", beach:"Praias", eat:"Compras", local:"Contactos locais", walk:"Caminhadas", secret:"Segredos",
+    all:"Tudo", house:"A Casa", joana:"Favoritos da Joana", food:"Restaurantes", coffee:"Cafés e brunch", wine:"Vinho", palace:"Palácios", n_any:"Todos", n_walk:"A pé de casa", n_beach:"Na praia", n_family:"Famílias", n_town:"Cascais", n_sintra:"Sintra", beach:"Praias", eat:"Compras", local:"Contactos locais", walk:"Caminhadas", secret:"Segredos",
     open:"Abrir no Maps", call:"Ligar", wa:"WhatsApp", askJoana:"Pede o contacto à Joana", saved:"Guardado", removed:"Removido",
     nothingToday:"Nada no calendário da aldeia hoje — dia perfeito para andar sem rumo.",
     market:"Mercado", bread:"A padeira passa", at:"às",
@@ -377,6 +378,43 @@ const T = {
 
 /* ---------- places ---------- */
 const PLACES = [
+  // ---------- A Casa (house guide) ----------
+  { id:"h-wifi", cat:"house", color:"var(--azul)",
+    t:{en:"Wi-Fi",pt:"Wi-Fi"}, s:{en:"Two networks: ground floor and lower floor",pt:"Duas redes: rés-do-chão e piso de baixo"},
+    b:{en:"Connect to the network of the floor you're on for the best signal.",pt:"Liga-te à rede do piso onde estás para teres melhor sinal."},
+    tips:[{en:"Ground floor — network: Casa da Azoia · password: CasaDaAzoia2026",pt:"Rés-do-chão — rede: Casa da Azoia · password: CasaDaAzoia2026"},{en:"Lower floor (-1) — network: C9DEE4 · password: 6N9a5sCsGPyYJnvg",pt:"Piso -1 — rede: C9DEE4 · password: 6N9a5sCsGPyYJnvg"}], meta:{en:["Internet"],pt:["Internet"]} },
+  { id:"h-heat", cat:"house", color:"var(--terra)",
+    t:{en:"Heating",pt:"Aquecimento"}, s:{en:"Underfloor heating, set by zone",pt:"Chão radiante, regulável por zona"},
+    b:{en:"The house has underfloor heating. Each zone has its own control panel on the wall — set the temperature you like in each room.",pt:"A casa tem chão radiante. Cada zona tem o seu painel na parede — escolhe a temperatura que quiseres em cada divisão."},
+    tips:[{en:"Underfloor heating is slow to react: change the temperature a few hours before you need it.",pt:"O chão radiante demora a reagir: muda a temperatura umas horas antes de precisares."}], meta:{en:["Comfort"],pt:["Conforto"]} },
+  { id:"h-outheaters", cat:"house", color:"var(--areia)",
+    t:{en:"Outdoor heaters",pt:"Aquecedores de exterior"}, s:{en:"Bring them in when it rains",pt:"Recolher quando chove"},
+    b:{en:"When you're not using the outdoor heaters and it's raining, please bring them inside and unplug them.",pt:"Quando não estiverem a ser usados e estiver a chover, por favor coloquem os aquecedores dentro de casa e desliguem-nos da tomada."},
+    tips:[], meta:{en:["Outside"],pt:["Exterior"]} },
+  { id:"h-grill", cat:"house", color:"var(--verde)", cfg:"gasDelivery", phone:"351963394069",
+    t:{en:"Gas grill",pt:"Grelhador a gás"}, s:{en:"The gas bottle is full",pt:"A botija está cheia"},
+    b:{en:"The grill runs on gas and the bottle is full. If it runs out, order a new one from Rui do Gás (+351 963 394 069): say you're guests at Casa da Azóia and he delivers the bottle to the house.",pt:"O grelhador é a gás e a botija está cheia. Se o gás acabar, encomenda uma nova ao Rui do Gás (963 394 069): basta dizer que são hóspedes da Casa da Azóia e ele entrega a botija em casa."},
+    tips:[{en:"Close the gas valve on the bottle when you finish.",pt:"Fecha a válvula da botija quando acabares."}], meta:{en:["Outside","BBQ"],pt:["Exterior","Churrasco"]} },
+  { id:"h-coffee", cat:"house", color:"var(--tinta)",
+    t:{en:"Coffee machine",pt:"Máquina de café"}, s:{en:"Nespresso capsules",pt:"Cápsulas Nespresso"},
+    b:{en:"The coffee machine uses Nespresso capsules.",pt:"A máquina de café usa cápsulas Nespresso."},
+    tips:[], meta:{en:["Kitchen"],pt:["Cozinha"]} },
+  { id:"h-trash", cat:"house", color:"var(--verde)",
+    t:{en:"Rubbish & recycling",pt:"Lixo e reciclagem"}, s:{en:"Bins on the main road",pt:"Contentores na estrada principal"},
+    b:{en:"The rubbish and recycling bins are on the main road, a short walk from the house.",pt:"Os contentores do lixo e da reciclagem estão na estrada principal, a poucos passos de casa."},
+    tips:[], meta:{en:["House"],pt:["Casa"]} },
+  { id:"h-rules", cat:"house", color:"var(--terra)",
+    t:{en:"House rules",pt:"Regras da casa"}, s:{en:"No smoking indoors",pt:"Não se pode fumar dentro de casa"},
+    b:{en:"Smoking is not allowed inside the house. You're welcome to smoke outside.",pt:"Não é permitido fumar dentro de casa. Lá fora, à vontade."},
+    tips:[], meta:{en:["House"],pt:["Casa"]} },
+  { id:"h-checkout", cat:"house", color:"var(--azul)",
+    t:{en:"Check-out",pt:"Check-out"}, s:{en:"By 12:00 (noon) — keys on the dining table",pt:"Até às 12:00 — chaves em cima da mesa de jantar"},
+    b:{en:"On your departure day, please check out by 12:00 noon. Leave all the keys on the dining table and close the door behind you.",pt:"No dia da saída, o check-out é até ao meio-dia. Deixem todas as chaves em cima da mesa de jantar e fechem a porta."},
+    tips:[], meta:{en:["Departure"],pt:["Saída"]} },
+  { id:"h-help", cat:"house", color:"var(--terra)", phone:"351916309201", ask:true, askMsg:{en:"Hi Joana! We are staying at Casa da Azóia and need some help:",pt:"Olá Joana! Estamos na Casa da Azóia e precisamos de ajuda:"},
+    t:{en:"Help & emergencies",pt:"Ajuda e emergências"}, s:{en:"Joana: +351 916 309 201 · Emergency: 112",pt:"Joana: +351 916 309 201 · Emergência: 112"},
+    b:{en:"For anything about the house, call or message Joana. In a medical or safety emergency, call 112 first.",pt:"Para qualquer coisa da casa, liga ou manda mensagem à Joana. Numa emergência médica ou de segurança, liga primeiro para o 112."},
+    tips:[{en:"European emergency number: 112 (free, works without a SIM card).",pt:"Número europeu de emergência: 112 (gratuito, funciona sem cartão SIM)."}], meta:{en:["Contacts"],pt:["Contactos"]} },
   { id:"guincho", cat:"beach", color:"var(--ocean)", maps:"Praia do Guincho",
     t:{en:"Praia do Guincho",pt:"Praia do Guincho"},
     s:{en:"Wild, wide and windy — the Atlantic at full volume",pt:"Selvagem, larga e ventosa — o Atlântico no volume máximo"},
@@ -615,6 +653,10 @@ const PLACES = [
     tips:[{en:"Cook: boil salted water (sea-salty), drop them in, 1 minute after it boils again. Done.",pt:"Cozer: água a ferver bem salgada, metem-se lá, 1 minuto depois de voltar a ferver. Pronto."},
           {en:"Message ahead — supply depends on the sea.",pt:"Manda mensagem antes — depende do mar."}],
     meta:{en:["Seasonal","Message first"],pt:["Sazonal","Avisar antes"]} },
+  { id:"gas", cat:"local", color:"var(--terra)", cfg:"gasDelivery", phone:"351963394069",
+    t:{en:"Gas bottle delivery",pt:"Encomendar gás"}, s:{en:"Rui do Gás brings a new bottle to the house",pt:"O Rui do Gás entrega a botija em casa"},
+    b:{en:"If the grill's gas runs out, call or message Rui. Just say you're guests at Casa da Azóia and order a bottle — he delivers it to the house.",pt:"Se o gás do grelhador acabar, liga ou manda mensagem ao Rui. Basta dizer que são hóspedes da Casa da Azóia e encomendar a botija — ele vem entregá-la a casa."},
+    tips:[{en:"Say: guests at Casa da Azóia, one gas bottle for the grill.",pt:"Diz: hóspedes da Casa da Azóia, uma botija para o grelhador."}], meta:{en:["Gas","Delivery"],pt:["Gás","Entrega"]} },
   { id:"paella", cat:"local", color:"var(--violet)", cfg:"paellaChef",
     t:{en:"Paella or barbecue at the house",pt:"Paelha ou churrasco cá em casa"},
     s:{en:"Chef Francisco Bispo cooks in the garden",pt:"O chef Francisco Bispo cozinha no jardim"},
@@ -737,6 +779,7 @@ const IC = {
   palace:'<path d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6"/>',
   wine:'<path d="M8 3h8l-1 6a3 3 0 0 1-6 0z"/><path d="M12 12v8M8.5 21h7"/>',
   coffee:'<path d="M4 8h13v5a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 3v2M12 3v2"/>',
+  house:'<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/>',
   joana:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
   food:'<path d="M4 3v8a3 3 0 0 0 6 0V3M7 3v18M17 3c-2 0-3 3-3 6s1 4 3 4v8"/>',
   all:'<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>',
@@ -938,7 +981,7 @@ function renderPicker(){
 }
 
 /* ---------- explore ---------- */
-const CATS=["all","joana","food","coffee","wine","palace","beach","eat","local","walk","secret"];
+const CATS=["all","house","joana","food","coffee","wine","palace","beach","eat","local","walk","secret"];
 let near="any";
 function renderChips(){
   const el=document.getElementById("chips");
@@ -978,8 +1021,8 @@ function cardHTML(p){
     const msg=L==="pt"?"Olá! Estamos hospedados na Casa da Azóia (contacto da Joana).":"Hi! We're staying at Casa da Azóia — Joana gave us your contact.";
     actions+=`<a class="btn wa" href="${waUrl(cfg.phone,msg)}" target="_blank" rel="noopener">${t("wa")}${cfg.name?" · "+cfg.name:""}</a>`;
   } else if((p.cfg||p.ask) && CONFIG.hostWhatsApp){
-    const msg=(L==="pt"?"Olá Joana! Podes passar-nos o contacto para: ":"Hi Joana! Could you send us the contact for: ")+p.t[L];
-    actions+=`<a class="btn" href="${waUrl(CONFIG.hostWhatsApp,msg)}" target="_blank" rel="noopener">${t("askJoana")}</a>`;
+    const msg=p.askMsg?p.askMsg[L]:(L==="pt"?"Olá Joana! Podes passar-nos o contacto para: ":"Hi Joana! Could you send us the contact for: ")+p.t[L];
+    actions+=`<a class="btn wa" href="${waUrl(CONFIG.hostWhatsApp,msg)}" target="_blank" rel="noopener">${p.askMsg?(L==="pt"?"WhatsApp à Joana":"WhatsApp Joana"):t("askJoana")}</a>`;
   } else if(p.cfg||p.ask){
     actions+=`<span class="btn" style="opacity:.7">${t("askJoana")}</span>`;
   }
@@ -994,7 +1037,7 @@ function cardHTML(p){
       ${extraHTML(p)}<p>${p.b[L]}</p>
       ${p.tips.length?`<ul class="tips">${p.tips.map(x=>`<li><i>›</i><span>${x[L]}</span></li>`).join("")}</ul>`:""}
       <div class="actions">${actions}</div>
-      ${hasNum?`<div class="numtxt">+${cfg.phone}</div>`:""}${p.phone?`<div class="numtxt">+${p.phone.replace(/^351/,"351 ")}</div>`:""}
+      ${hasNum?`<div class="numtxt">+${cfg.phone}</div>`:""}${p.phone&&!hasNum?`<div class="numtxt">+${p.phone.replace(/^351/,"351 ")}</div>`:""}
     </div></div></article>`;
 }
 function bindCards(root){
@@ -1009,7 +1052,7 @@ function bindCards(root){
   });
 }
 function renderGrid(){
-  const items=PLACES.filter(p=>(filter==="all"||p.cat===filter||(filter==="secret"&&p.secret)||(filter==="joana"&&p.fav))&&(filter!=="food"||near==="any"||p.near===near||(Array.isArray(p.near)&&p.near.includes(near))));
+  const items=PLACES.filter(p=>((filter==="all"&&p.cat!=="house")||p.cat===filter||(filter==="secret"&&p.secret)||(filter==="joana"&&p.fav))&&(filter!=="food"||near==="any"||p.near===near||(Array.isArray(p.near)&&p.near.includes(near))));
   const el=document.getElementById("grid");el.innerHTML=items.map(cardHTML).join("");bindCards(el);
 }
 function renderSaved(){
