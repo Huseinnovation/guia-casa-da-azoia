@@ -49,6 +49,28 @@ b,strong,h1,h2,h3{font-weight:400}
 .a2hs button{border-radius:999px;padding:9px 16px;font-size:14px}
 .a2hs .ok{background:var(--verde);color:var(--cal)}
 .a2hs .no{background:rgba(0,0,0,.05);color:var(--ink2)}
+.chef{border-radius:var(--r-xl);margin-top:14px;overflow:hidden}
+.chef .strip{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:6px 6px 0}
+.chef .strip::-webkit-scrollbar{display:none}
+.chef .strip img{flex:0 0 72%;height:190px;object-fit:cover;border-radius:20px;scroll-snap-align:start}
+.chef .body{padding:16px 18px 18px}
+.chef .eb{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--terra)}
+.chef h3{font-size:22px;font-weight:400;margin:4px 0 6px;letter-spacing:-.01em}
+.chef .lead{margin:0 0 12px;color:var(--ink2);font-size:14.5px;line-height:1.5}
+.chef .offers{display:grid;gap:8px}
+.chef .offer{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;background:rgba(255,255,255,.7);border:1px solid var(--line);border-radius:16px;padding:11px 13px}
+.chef .offer b{font-weight:500;font-size:15px}.chef .offer span{display:block;font-size:12.5px;color:var(--ink2);margin-top:2px;line-height:1.4}
+.chef .offer .pr{white-space:nowrap;font-size:15px;color:var(--verde);font-weight:500}
+.chef .note{font-size:12.5px;color:var(--ink2);margin:10px 2px 0;line-height:1.45}
+.chef .form{display:none;margin-top:14px;border-top:1px solid var(--line);padding-top:14px}
+.chef.open .form{display:block}.chef.open .openf{display:none}
+.chef label{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin:12px 2px 6px}
+.chef input[type=date],.chef textarea{width:100%;box-sizing:border-box;font:inherit;font-size:15px;padding:10px 12px;border-radius:14px;border:1px solid var(--line);background:#fff;color:var(--ink)}
+.chef textarea{min-height:64px;resize:vertical}
+.chef .step{display:flex;align-items:center;gap:12px}.chef .step button{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);font-size:18px}
+.chef .step output{min-width:28px;text-align:center;font-size:17px}
+.chef .warn{font-size:12.5px;color:var(--terra);margin:8px 2px 0;min-height:1em}
+.chef .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
 .glass{background:var(--glass);backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);border:1px solid rgba(255,255,255,.75);box-shadow:var(--shadow)}
 button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 a{color:inherit;text-decoration:none}
@@ -244,6 +266,9 @@ h2{font-size:21px;letter-spacing:-.01em;margin:30px 2px 12px;font-weight:400}
       <div class="pill glass"><div class="k" data-t="westmost"></div><div class="v">1 km</div><div class="s">Cabo da Roca</div></div>
     </div>
 
+    <h2 data-t="chefH"></h2>
+    <div class="chef glass" id="chefToday"></div>
+
     <h2 data-t="happeningToday"></h2>
     <div class="today-list" id="todayList"></div>
 
@@ -282,6 +307,7 @@ h2{font-size:21px;letter-spacing:-.01em;margin:30px 2px 12px;font-weight:400}
   <section class="view" id="v-house">
     <p class="eyebrow" data-t="houseEyebrow"></p>
     <h1 data-t="houseTitle"></h1>
+    <div class="chef glass" id="chefHouse" style="margin-bottom:14px"></div>
     <div class="grid" id="houseGrid"></div>
   </section>
 
@@ -346,13 +372,13 @@ const SKY={
   night:'linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url(img/vista-mar.jpg)'
 };
 const CRED={"adraga1": {"a": "Alexkom000", "l": "CC BY 4.0", "u": "https://commons.wikimedia.org/wiki/File:2025-08-17_Colares,_Praia_da_Adraga_3.jpg"}, "adraga2": {"a": "Contaminadas", "l": "CC BY-SA 4.0", "u": "https://commons.wikimedia.org/wiki/File:Praia_da_adraga_portugal.jpg"}, "adraga3": {"a": "Alexkom000", "l": "CC BY 4.0", "u": "https://commons.wikimedia.org/wiki/File:2025-08-17_Colares,_Praia_da_Adraga_4.jpg"}, "guincho1": {"a": "Alvesgaspar", "l": "CC BY-SA 3.0", "u": "https://commons.wikimedia.org/wiki/File:Guincho_June_2013-4.jpg"}, "guincho2": {"a": "Alvesgaspar", "l": "CC BY-SA 3.0", "u": "https://commons.wikimedia.org/wiki/File:Guincho_May_2012-4.jpg"}, "grande1": {"a": "Simon Burchell", "l": "CC BY-SA 4.0", "u": "https://commons.wikimedia.org/wiki/File:Praia_Grande_do_Rod%C3%ADzio_01.jpg"}, "grande2": {"a": "Morganaca", "l": "CC BY-SA 4.0", "u": "https://commons.wikimedia.org/wiki/File:Praia_Grande_Sintra.jpg"}, "grande3": {"a": "Simon Burchell", "l": "CC BY-SA 4.0", "u": "https://commons.wikimedia.org/wiki/File:Praia_Grande_do_Rod%C3%ADzio_02.jpg"}, "ursa1": {"a": "Erico Reis Junior", "l": "CC BY-SA 4.0", "u": "https://commons.wikimedia.org/wiki/File:Praia_da_Ursa_-_Parque_Natural_Sintra-Cascais.jpg"}, "ursa2": {"a": "LensaCibi", "l": "CC BY-SA 4.0", "u": "https://commons.wikimedia.org/wiki/File:Praia_da_Ursa_cliffs,_Sintra-Cascais_Natural_Park,_Portugal_-_May_2025.jpg"}, "ursa3": {"a": "LensaCibi", "l": "CC BY-SA 4.0", "u": "https://commons.wikimedia.org/wiki/File:Coastal_cliffs_of_Praia_da_Ursa_with_human_silhouettes,_Portugal_-_May_2025.jpg"}, "mon3": {"a": "DiogoBaptista", "l": "CC BY-SA 4.0", "u": "https://commons.wikimedia.org/wiki/File:Tapada_de_Monserrate_03.jpg"}, "roca1": {"a": "Jakub Hałun", "l": "CC BY 4.0", "u": "https://commons.wikimedia.org/wiki/File:Cliffs_at_Cabo_da_Roca,_Portugal,_20250606_1530_0295.jpg"}, "roca2": {"a": "Ввласенко", "l": "CC BY-SA 3.0", "u": "https://commons.wikimedia.org/wiki/File:Cabo_da_Roca_-_Cape_Roca.JPG"}, "mon4": {"a": "DiogoBaptista", "l": "CC BY-SA 4.0", "u": "https://commons.wikimedia.org/wiki/File:Tapada_de_Monserrate_04.jpg"}, "mon6": {"a": "DiogoBaptista", "l": "CC BY-SA 4.0", "u": "https://commons.wikimedia.org/wiki/File:Tapada_de_Monserrate_06.jpg"}, "mon8": {"a": "DiogoBaptista", "l": "CC BY-SA 4.0", "u": "https://commons.wikimedia.org/wiki/File:Tapada_de_Monserrate_08.jpg"}, "mon10": {"a": "DiogoBaptista", "l": "CC BY-SA 4.0", "u": "https://commons.wikimedia.org/wiki/File:Tapada_de_Monserrate_10.jpg"}, "guinchoU1": {"a": "Marijan Sivric", "l": "Unsplash", "u": "https://unsplash.com/photos/wuzA0pOkOIM"}, "guinchoU2": {"a": "Manuel Inglez", "l": "Unsplash", "u": "https://unsplash.com/photos/M8eCY2GcleI"}, "grandeU1": {"a": "Leonor Oom", "l": "Unsplash", "u": "https://unsplash.com/photos/IFz_WxiZ36c"}, "adragaU1": {"a": "ISKRA Photography", "l": "Unsplash", "u": "https://unsplash.com/photos/YN1CyQJ88xc"}, "adragaU2": {"a": "Vlad D", "l": "Unsplash", "u": "https://unsplash.com/photos/a_zVfx6ZNUc"}};
-const IMGS={"guincho": ["guinchoJ1", "guinchoU2", "guinchoJ2", "guinchoU1", "guinchoJ3"], "adraga": ["adragaJ1", "adragaU2", "adragaJ2", "adragaU1"], "grande": ["grandeJ1", "grandeU1", "grande2"], "ursa": ["ursa1", "ursa2", "ursa3"], "mon-verde": ["mon-urso", "mon-quinta"], "mon-azul": ["mon-lago", "mon-quinta"], "mon-laranja": ["mon-deck", "mon-urso"], "coast": ["ursa3", "adraga1", "roca1"], "pr7": ["adraga1", "grande2"], "roca": ["roca2", "roca1"], "adragarest": ["adragaJ2"], "passadicos": ["pass1", "pass2", "pass3"]};
+const IMGS={"chef": ["chef-meat", "chef-bfast1", "chef-scallop", "chef-dessert"], "guincho": ["guinchoJ1", "guinchoU2", "guinchoJ2", "guinchoU1", "guinchoJ3"], "adraga": ["adragaJ1", "adragaU2", "adragaJ2", "adragaU1"], "grande": ["grandeJ1", "grandeU1", "grande2"], "ursa": ["ursa1", "ursa2", "ursa3"], "mon-verde": ["mon-urso", "mon-quinta"], "mon-azul": ["mon-lago", "mon-quinta"], "mon-laranja": ["mon-deck", "mon-urso"], "coast": ["ursa3", "adraga1", "roca1"], "pr7": ["adraga1", "grande2"], "roca": ["roca2", "roca1"], "adragarest": ["adragaJ2"], "passadicos": ["pass1", "pass2", "pass3"]};
 const LAT = 38.776, LON = -9.481;
 
 /* ---------- copy ---------- */
 const T = {
   en:{
-    tagline:"Your local guide", tToday:"Today", tExplore:"Explore", tWeek:"This week", tSaved:"Saved", tHouse:"The House", houseEyebrow:"Everything you need", houseTitle:"The house",
+    tagline:"Your local guide", tToday:"Today", tExplore:"Explore", tWeek:"This week", tSaved:"Saved", chefH:"A chef at the house", tHouse:"The House", houseEyebrow:"Everything you need", houseTitle:"The house",
     morning:"Good morning", afternoon:"Good afternoon", evening:"Good evening", night:"Good night",
     sunset:"Sunset", daylight:"Daylight", today:"today", westmost:"To Europe's edge",
     inMin:"in", min:"min", h:"h", passed:"already set",
@@ -378,7 +404,7 @@ const T = {
     ctaBread:"Show me", ctaMarket:"Market details", ctaBeach:"Pick my beach", ctaSunset:"Sunset spot", ctaDinner:"Dinner ideas", ctaNight:"Plan tomorrow"
   },
   pt:{
-    tagline:"O teu guia local", tToday:"Hoje", tExplore:"Explorar", tWeek:"Semana", tSaved:"Guardados", tHouse:"A Casa", houseEyebrow:"Tudo o que precisas", houseTitle:"A casa",
+    tagline:"O teu guia local", tToday:"Hoje", tExplore:"Explorar", tWeek:"Semana", tSaved:"Guardados", chefH:"Chef cá em casa", tHouse:"A Casa", houseEyebrow:"Tudo o que precisas", houseTitle:"A casa",
     morning:"Bom dia", afternoon:"Boa tarde", evening:"Boa noite", night:"Boa noite",
     sunset:"Pôr do sol", daylight:"Luz do dia", today:"hoje", westmost:"Até ao fim da Europa",
     inMin:"daqui a", min:"min", h:"h", passed:"já se pôs",
@@ -700,9 +726,9 @@ const PLACES = [
     tips:[{en:"Book a few days ahead.",pt:"Marca com alguns dias de antecedência."}],
     meta:{en:["Paella","BBQ","At the house"],pt:["Paelha","Churrasco","Em casa"]} },
   { id:"chef", cat:"local", color:"var(--violet)", cfg:"privateChef",
-    t:{en:"Private chef dinner · Tantôt",pt:"Jantar com chef privado · Tantôt"},
+    t:{en:"Private chef at the house · Tantôt",pt:"Chef privada cá em casa · Tantôt"},
     s:{en:"A special night without leaving home",pt:"Uma noite especial sem sair de casa"},
-    b:{en:"Birthday, anniversary or just the last night — a chef comes over and cooks dinner for you.",pt:"Aniversário, celebração ou só a última noite — um chef vem cá e cozinha o jantar para vocês."},
+    b:{en:"Chef Constança David (Tantôt) cooks breakfast, lunch or dinner at the house — shopping, cooking, serving and cleaning up included. Breakfast €13–15 pp (min. 6 people, 2 mornings); lunch or dinner €60–90 pp. Book at least 3 days ahead — use the booking form on the Today page.",pt:"A chef Constança David (Tantôt) faz pequeno-almoço, almoço ou jantar cá em casa — compras, cozinha, serviço e arrumação incluídos. Pequeno-almoço 13–15 € pp (mín. 6 pessoas, 2 manhãs); almoço ou jantar 60–90 € pp. Reserva com pelo menos 3 dias de antecedência — usa o formulário na página Hoje."},
     tips:[], meta:{en:["Celebrations"],pt:["Celebrações"]} },
 
   { id:"passadicos", cat:"walk", isNew:true, color:"var(--leaf)", maps:"Parque Ecológico Adraga Praia Grande",
@@ -1122,6 +1148,64 @@ function renderWeek(){
     :`<div class="empty glass">${t("nothingToday")}</div>`;
 }
 
+
+/* ---------- chef at home (Tantôt) ---------- */
+const CHEF={phone:"351912695515",name:"Constança · Tantôt",imgs:["chef-meat","chef-bfast1","chef-scallop","chef-bfast2","chef-dessert"]};
+const chefState={svc:"dinner",people:6,days:2,date:"",notes:""};
+function chefMinDate(){const d=new Date();d.setDate(d.getDate()+3);return d}
+const isoD=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+function renderChef(id){
+  const el=document.getElementById(id);if(!el)return;const pt=L==="pt";
+  const min=chefMinDate();const minTxt=min.toLocaleDateString(pt?"pt-PT":"en-GB",{weekday:"long",day:"numeric",month:"long"});
+  if(!chefState.date)chefState.date=isoD(min);
+  const S=chefState, bf=S.svc==="breakfast";
+  el.innerHTML=`<div class="strip">${CHEF.imgs.map(k=>`<img loading="lazy" src="img/places/${k}.jpg" alt="">`).join("")}</div>
+  <div class="body">
+    <div class="eb">Tantôt · ${pt?"chef privada":"private chef"}</div>
+    <h3>${pt?"Pequeno-almoço, almoço ou jantar, sem sair de casa":"Breakfast, lunch or dinner without leaving the house"}</h3>
+    <p class="lead">${pt?"A chef Constança David faz as compras, cozinha aqui, põe a mesa, serve e arruma. Feito de raiz, sempre com o que está na época.":"Chef Constança David does the shopping, cooks here, sets the table, serves and cleans up. Made from scratch, always in season."}</p>
+    <div class="offers">
+      <div class="offer"><div><b>${pt?"Pequeno-almoço":"Breakfast"}</b><span>${pt?"Prato salgado, prato doce, fruta da época, café, chá, leite e sumo. Mínimo 6 pessoas e 2 manhãs.":"A savoury dish, a sweet dish, seasonal fruit, coffee, tea, milk and juice. Minimum 6 people and 2 mornings."}</span></div><div class="pr">${pt?"13–15 € pp":"€13–15 pp"}</div></div>
+      <div class="offer"><div><b>${pt?"Almoço ou jantar":"Lunch or dinner"}</b><span>${pt?"Menu pensado convosco — de vários pratos ou mesa partilhada. Bebidas à parte.":"A menu planned with you — several courses or a sharing table. Drinks not included."}</span></div><div class="pr">${pt?"60–90 € pp":"€60–90 pp"}</div></div>
+    </div>
+    <p class="note">${pt?`Reserva com pelo menos 3 dias de antecedência — a próxima data disponível é <b>${minTxt}</b>.`:`Book at least 3 days ahead — the earliest date is <b>${minTxt}</b>.`}</p>
+    <div class="acts openf"><button class="btn wa" data-a="open">${pt?"Reservar":"Book"}</button><a class="btn" href="tantot-casa-da-azoia.pdf" target="_blank" rel="noopener">${pt?"Ver apresentação":"See the menu (PDF)"}</a></div>
+    <div class="form">
+      <label>${pt?"O quê":"What"}</label>
+      <div class="seg" style="width:fit-content">${[["breakfast",pt?"Pequeno-almoço":"Breakfast"],["lunch",pt?"Almoço":"Lunch"],["dinner",pt?"Jantar":"Dinner"]].map(([k,v])=>`<button data-svc="${k}" class="${S.svc===k?"on":""}">${v}</button>`).join("")}</div>
+      <label>${bf?(pt?"Primeira manhã":"First morning"):(pt?"Data":"Date")}</label>
+      <input type="date" data-f="date" min="${isoD(min)}" value="${S.date}">
+      <label>${pt?"Pessoas":"People"}</label>
+      <div class="step"><button data-p="-1">−</button><output>${S.people}</output><button data-p="1">+</button></div>
+      ${bf?`<label>${pt?"Quantas manhãs":"How many mornings"}</label><div class="step"><button data-d="-1">−</button><output>${S.days}</output><button data-d="1">+</button></div>`:""}
+      <label>${pt?"Alergias, ocasião, pedidos":"Allergies, occasion, requests"}</label>
+      <textarea data-f="notes" placeholder="${pt?"Ex.: aniversário, um vegetariano, 2 crianças":"E.g. birthday, one vegetarian, 2 children"}">${S.notes}</textarea>
+      <div class="warn" data-w></div>
+      <div class="acts"><a class="btn wa" data-a="send" target="_blank" rel="noopener">${pt?"Enviar pedido por WhatsApp":"Send request on WhatsApp"}</a><button class="btn" data-a="close">${pt?"Cancelar":"Cancel"}</button></div>
+    </div>
+  </div>`;
+  const upd=()=>{
+    const w=el.querySelector("[data-w]"),a=el.querySelector('[data-a="send"]');const issues=[];
+    if(S.date<isoD(min))issues.push(pt?"Escolhe uma data a partir de "+minTxt+".":"Pick a date from "+minTxt+".");
+    if(bf&&S.people<6)issues.push(pt?"O pequeno-almoço é para 6 pessoas ou mais.":"Breakfast is for 6 people or more.");
+    if(bf&&S.days<2)issues.push(pt?"O pequeno-almoço é para 2 manhãs ou mais (não precisam de ser seguidas).":"Breakfast is for 2 mornings or more (they don't need to be in a row).");
+    w.textContent=issues.join(" ");a.style.opacity=issues.length?.45:1;a.style.pointerEvents=issues.length?"none":"";
+    const svcTxt={breakfast:pt?"pequeno-almoço":"breakfast",lunch:pt?"almoço":"lunch",dinner:pt?"jantar":"dinner"}[S.svc];
+    const dTxt=new Date(S.date+"T12:00").toLocaleDateString(pt?"pt-PT":"en-GB",{weekday:"long",day:"numeric",month:"long"});
+    const msg=pt?`Olá Constança! Estamos hospedados na Casa da Azóia e gostávamos de reservar ${svcTxt} para ${S.people} pessoas, ${bf?`${S.days} manhãs a começar a `:"a "}${dTxt}.${S.notes?"\n"+S.notes:""}`
+               :`Hi Constança! We're staying at Casa da Azóia and would like to book ${svcTxt} for ${S.people} people, ${bf?`${S.days} mornings starting on `:"on "}${dTxt}.${S.notes?"\n"+S.notes:""}`;
+    a.href=waUrl(CHEF.phone,msg);
+  };
+  el.querySelectorAll("[data-svc]").forEach(b=>b.onclick=()=>{S.svc=b.dataset.svc;renderChef(id);el.classList.add("open")});
+  el.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{S.people=Math.max(1,Math.min(30,S.people+ +b.dataset.p));b.parentNode.querySelector("output").textContent=S.people;upd()});
+  el.querySelectorAll("[data-d]").forEach(b=>b.onclick=()=>{S.days=Math.max(1,Math.min(14,S.days+ +b.dataset.d));b.parentNode.querySelector("output").textContent=S.days;upd()});
+  el.querySelector('[data-f="date"]').onchange=e=>{S.date=e.target.value||isoD(min);upd()};
+  el.querySelector('[data-f="notes"]').oninput=e=>{S.notes=e.target.value;upd()};
+  el.querySelector('[data-a="open"]').onclick=()=>el.classList.add("open");
+  el.querySelector('[data-a="close"]').onclick=()=>el.classList.remove("open");
+  upd();
+}
+
 /* ---------- nav ---------- */
 function go(v){
   document.querySelectorAll(".view").forEach(s=>s.classList.toggle("on",s.id==="v-"+v));
@@ -1138,7 +1222,7 @@ document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>go(b.dataset.v));
 document.querySelectorAll("#lang button").forEach(b=>b.onclick=()=>{L=b.dataset.l;store.set("lang",L);renderAll()});
 window.addEventListener("hashchange",()=>{const h=location.hash.slice(1);if(["today","explore","week","house","saved"].includes(h))go(h)});
 
-function renderAll(){renderCopy();renderToday();renderChips();renderGrid();renderWeek();renderSaved();renderHouse();renderFavCount()}
+function renderAll(){renderCopy();renderToday();renderChips();renderGrid();renderWeek();renderSaved();renderHouse();renderChef("chefToday");renderChef("chefHouse");renderFavCount()}
 renderAll();
 loadCond();
 const h0=location.hash.slice(1);if(["explore","week","house","saved"].includes(h0))go(h0);
