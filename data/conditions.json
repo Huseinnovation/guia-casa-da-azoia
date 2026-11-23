@@ -1,33 +1,192 @@
 {
-  "updated": "2026-11-18T16:20:00+00:00",
-  "source": "surf-forecast.com · Praia Grande",
-  "days": [
-    {"date": "2026-11-18",
-     "slots": [
-      {"t": "09:00", "wave": 4.0, "period": 16, "wind": 15, "dir": "WSW"},
-      {"t": "12:00", "wave": 4.5, "period": 16, "wind": 25, "dir": "SW"},
-      {"t": "15:00", "wave": 4.5, "period": 16, "wind": 40, "dir": "SW"},
-      {"t": "18:00", "wave": 5.0, "period": 16, "wind": 45, "dir": "WSW"},
-      {"t": "21:00", "wave": 5.0, "period": 16, "wind": 35, "dir": "WNW"}],
-     "tides": [
-      {"type": "high", "t": "08:48", "h": 2.13},
-      {"type": "low", "t": "15:19", "h": 0.88},
-      {"type": "high", "t": "21:37", "h": 2.00}]},
-    {"date": "2026-11-19",
-     "slots": [
-      {"t": "09:00", "wave": 5.0, "period": 14, "wind": 30, "dir": "WNW"},
-      {"t": "12:00", "wave": 5.0, "period": 14, "wind": 25, "dir": "WNW"},
-      {"t": "15:00", "wave": 5.0, "period": 14, "wind": 25, "dir": "WNW"},
-      {"t": "18:00", "wave": 4.5, "period": 14, "wind": 20, "dir": "WNW"},
-      {"t": "21:00", "wave": 4.5, "period": 14, "wind": 20, "dir": "W"}],
-     "tides": []},
-    {"date": "2026-11-20",
-     "slots": [
-      {"t": "09:00", "wave": 4.0, "period": 14, "wind": 15, "dir": "SSW"},
-      {"t": "12:00", "wave": 4.0, "period": 14, "wind": 15, "dir": "S"},
-      {"t": "15:00", "wave": 3.5, "period": 13, "wind": 25, "dir": "S"},
-      {"t": "18:00", "wave": 3.5, "period": 13, "wind": 30, "dir": "S"},
-      {"t": "21:00", "wave": 3.0, "period": 13, "wind": 35, "dir": "S"}],
-     "tides": []}
-  ]
+ "updated": "2026-11-23T17:30:25+00:00",
+ "source": "Beachcam · Praia Grande",
+ "days": [
+  {
+   "date": "2026-11-23",
+   "slots": [
+    {
+     "t": "09:00",
+     "wave": 2.1,
+     "period": 8,
+     "wind": 10,
+     "dir": "E"
+    },
+    {
+     "t": "12:00",
+     "wave": 2.1,
+     "period": 8,
+     "wind": 6,
+     "dir": "SE"
+    },
+    {
+     "t": "15:00",
+     "wave": 2.0,
+     "period": 8,
+     "wind": 9,
+     "dir": "W"
+    },
+    {
+     "t": "18:00",
+     "wave": 1.8,
+     "period": 8,
+     "wind": 5,
+     "dir": "N"
+    },
+    {
+     "t": "21:00",
+     "wave": 1.7,
+     "period": 8,
+     "wind": 3,
+     "dir": "NE"
+    }
+   ],
+   "tides": [
+    {
+     "type": "high",
+     "t": "01:33",
+     "h": 3.6
+    },
+    {
+     "type": "low",
+     "t": "07:28",
+     "h": 0.8
+    },
+    {
+     "type": "high",
+     "t": "13:53",
+     "h": 3.7
+    },
+    {
+     "type": "low",
+     "t": "19:48",
+     "h": 0.7
+    }
+   ]
+  },
+  {
+   "date": "2026-11-24",
+   "slots": [
+    {
+     "t": "09:00",
+     "wave": 1.6,
+     "period": 5,
+     "wind": 20,
+     "dir": "SW"
+    },
+    {
+     "t": "12:00",
+     "wave": 2.1,
+     "period": 6,
+     "wind": 19,
+     "dir": "NW"
+    },
+    {
+     "t": "15:00",
+     "wave": 2.2,
+     "period": 6,
+     "wind": 24,
+     "dir": "NW"
+    },
+    {
+     "t": "18:00",
+     "wave": 2.1,
+     "period": 6,
+     "wind": 21,
+     "dir": "NW"
+    },
+    {
+     "t": "21:00",
+     "wave": 2.3,
+     "period": 6,
+     "wind": 17,
+     "dir": "NW"
+    }
+   ],
+   "tides": [
+    {
+     "type": "high",
+     "t": "02:16",
+     "h": 3.7
+    },
+    {
+     "type": "low",
+     "t": "08:12",
+     "h": 0.6
+    },
+    {
+     "type": "high",
+     "t": "14:39",
+     "h": 3.7
+    },
+    {
+     "type": "low",
+     "t": "20:31",
+     "h": 0.6
+    }
+   ]
+  },
+  {
+   "date": "2026-11-25",
+   "slots": [
+    {
+     "t": "09:00",
+     "wave": 2.6,
+     "period": 6,
+     "wind": 21,
+     "dir": "NW"
+    },
+    {
+     "t": "12:00",
+     "wave": 2.6,
+     "period": 6,
+     "wind": 22,
+     "dir": "NW"
+    },
+    {
+     "t": "15:00",
+     "wave": 3.0,
+     "period": 7,
+     "wind": 19,
+     "dir": "N"
+    },
+    {
+     "t": "18:00",
+     "wave": 2.9,
+     "period": 7,
+     "wind": 13,
+     "dir": "N"
+    },
+    {
+     "t": "21:00",
+     "wave": 2.9,
+     "period": 7,
+     "wind": 7,
+     "dir": "N"
+    }
+   ],
+   "tides": [
+    {
+     "type": "high",
+     "t": "03:01",
+     "h": 3.8
+    },
+    {
+     "type": "low",
+     "t": "08:59",
+     "h": 0.6
+    },
+    {
+     "type": "high",
+     "t": "15:27",
+     "h": 3.7
+    },
+    {
+     "type": "low",
+     "t": "21:16",
+     "h": 0.6
+    }
+   ]
+  }
+ ]
 }
